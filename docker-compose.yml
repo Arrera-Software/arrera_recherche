@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+  searxng:
+    container_name: searxng
+    image: docker.io/searxng/searxng:latest
+    ports:
+      # Format "PortHôte:PortConteneur"
+      - "8090:8080"
+    volumes:
+      # Le flag :Z est crucial si le système hôte est sous SELinux (AlmaLinux, Fedora, RHEL). 
+      # Il instruit le démon (ex: Podman) de relabelliser automatiquement les droits d'accès du dossier pour le conteneur.
+      - ./searxng:/etc/searxng:rw,Z
+    environment:
+      - SEARXNG_BASE_URL=${SEARXNG_BASE_URL}
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    restart: unless-stopped
