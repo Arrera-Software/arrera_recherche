@@ -1,0 +1,42 @@
+{% extends "simple/base.html" %}
+{% from 'simple/icons.html' import icon_big %}
+{% block content %}
+<div class="index custom-home">
+    <div class="brand-container">
+        <img class="logo-main" src="{{ url_for('static', filename='img/searxng.png') }}" alt="Arrera Recherche">
+    </div>
+    {% include 'simple/simple_search.html' %}
+</div>
+
+<style>
+.custom-home .brand-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    animation: fadeIn 0.8s ease-out;
+}
+.custom-home .logo-main {
+    width: 340px;
+    max-width: 90%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 180, 216, 0.2);
+    margin-bottom: 0;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.custom-home .logo-main:hover {
+    transform: scale(1.03);
+}
+/* Hide default SearXNG title */
+.index .title {
+    display: none !important;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+{% endblock %}
+

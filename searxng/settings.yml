@@ -1,0 +1,11 @@
+# Read the documentation before extending the defaults:
+# https://docs.searxng.org/admin/settings/
+
+use_default_settings: true
+
+general:
+  instance_name: "Arrera Recherche"
+
+server:
+  secret_key: "KGtoaMe5MmLARyB1eZOhA32ijynVYyJ"
+  image_proxy: true

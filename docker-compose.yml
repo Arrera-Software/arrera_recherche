@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  searxng:
+    container_name: searxng
+    image: docker.io/searxng/searxng:latest
+    ports:
+      - "8090:8080"
+    volumes:
+      - ./searxng:/etc/searxng:rw,Z
+      - ./searxng/templates/simple:/usr/local/searxng/searx/templates/simple:ro
+      - ./searxng/static/themes/simple:/usr/local/searxng/searx/static/themes/simple:ro
+    environment:
+      - SEARXNG_BASE_URL=${SEARXNG_BASE_URL}
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    restart: unless-stopped
