@@ -5,12 +5,11 @@ services:
     container_name: searxng
     image: docker.io/searxng/searxng:latest
     ports:
-      # Format "PortHôte:PortConteneur"
       - "8090:8080"
     volumes:
-      # Le flag :Z est crucial si le système hôte est sous SELinux (AlmaLinux, Fedora, RHEL). 
-      # Il instruit le démon (ex: Podman) de relabelliser automatiquement les droits d'accès du dossier pour le conteneur.
       - ./searxng:/etc/searxng:rw,Z
+      - ./searxng/templates/simple:/usr/local/searxng/searx/templates/simple:ro
+      - ./searxng/static/themes/simple:/usr/local/searxng/searx/static/themes/simple:ro
     environment:
       - SEARXNG_BASE_URL=${SEARXNG_BASE_URL}
     logging:

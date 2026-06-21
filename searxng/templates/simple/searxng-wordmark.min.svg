@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <defs>
+    <linearGradient id="gradient-a" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00b4d8"/>
+      <stop offset="100%" stop-color="#0077b6"/>
+    </linearGradient>
+  </defs>
+  <!-- Stylized letter 'A' -->
+  <path d="M 20 80 L 45 20 Q 50 10 55 20 L 80 80" fill="none" stroke="url(#gradient-a)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M 32 60 L 68 60" fill="none" stroke="url(#gradient-a)" stroke-width="12" stroke-linecap="round" />
+  <!-- Magnifying glass lens -->
+  <circle cx="68" cy="60" r="16" fill="#0f172a" stroke="url(#gradient-a)" stroke-width="8" />
+  <!-- Magnifying glass handle -->
+  <line x1="79" y1="71" x2="92" y2="84" stroke="url(#gradient-a)" stroke-width="8" stroke-linecap="round" />
+</svg>
