@@ -1,5 +1,37 @@
 {% extends "simple/base.html" %}
 {% from 'simple/icons.html' import icon, icon_big, icon_small %}
+{% block head %}
+  {{ super() }}
+  <style>
+    /* By default: hide dark, show light */
+    #search_logo .logo-dark {
+      display: none !important;
+    }
+    #search_logo .logo-light {
+      display: inline-block !important;
+    }
+
+    /* Explicit Dark/Black themes */
+    html.theme-dark #search_logo .logo-dark,
+    html.theme-black #search_logo .logo-dark {
+      display: inline-block !important;
+    }
+    html.theme-dark #search_logo .logo-light,
+    html.theme-black #search_logo .logo-light {
+      display: none !important;
+    }
+
+    /* Auto theme with dark system preference */
+    @media (prefers-color-scheme: dark) {
+      html.theme-auto #search_logo .logo-dark {
+        display: inline-block !important;
+      }
+      html.theme-auto #search_logo .logo-light {
+        display: none !important;
+      }
+    }
+  </style>
+{% endblock %}
 {% macro engine_data_form(engine_data) -%}
     {% for engine_name, kv_data in engine_data.items() %}
         {% for k, v in kv_data.items() %}
